@@ -6,11 +6,12 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.Instant;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -32,6 +33,11 @@ public class Area implements Serializable {
     private String areaId;
     @NotBlank(message = "Area name should not be null or empty")
     private String areaName;
+
+    private String areaStreet;
+
+    private String areaDVNNo;
+
     private String areaDescription;
     @CreatedDate
     private Date createAt;

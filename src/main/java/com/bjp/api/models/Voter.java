@@ -1,10 +1,5 @@
 package com.bjp.api.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
@@ -17,10 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -39,6 +31,17 @@ public class Voter implements Serializable {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = IDENTITY, generator = "uuid2")
     private String voterId;
+
+
+    private String voterIdNo;
+
+    private String voterMobileNumber;
+
+
+    private String voterDiscriptons;
+
+    private Boolean isPartyMember;
+
     @NotBlank(message = "Voter should not be null or empty")
     private String voterName;
     @Min(value = 18, message = "Voter age should be greater than 18")
