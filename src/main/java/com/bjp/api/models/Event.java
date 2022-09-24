@@ -6,12 +6,10 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -29,21 +27,15 @@ public class Event implements Serializable {
     @Id
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = IDENTITY, generator = "uuid2")
-    @NotBlank(message = "Event id should not be null or empty")
     private String eventId;
-    @NotBlank(message = "Event organizer should not be null or empty")
-    private String eventOrganizer;
-    @NotBlank(message = "Event location should not be null or empty")
+    private String eventName;
+    private String eventOrganizerName;
     private String eventLocation;
-    @NotBlank(message = "Event contact number should not be null or empty")
-    private String eventContactNumber;
-    @NotBlank(message = "Event date should not be null or empty")
+    private String eventOrganizerContactNumber;
     private String eventDate;
-    @NotBlank(message = "Event subject should not be null or empty")
     private String eventSubject;
     private String eventDescription;
-    @NotBlank(message = "Event guest should not be null or empty")
-    private String guests;
+    private String eventChiefGuests;
     @CreatedDate
     private Date createAt;
     @LastModifiedDate

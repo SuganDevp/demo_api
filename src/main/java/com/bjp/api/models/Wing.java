@@ -9,7 +9,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -28,21 +30,15 @@ public class Wing implements Serializable {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = IDENTITY, generator = "uuid2")
     private String wingId;
-    @NotBlank(message = "Wing name should not be null or empty")
     private String wingName;
-    @NotBlank(message = "Wing area should not be null or empty")
     private String wingArea;
-
     private String wingMobileNumber;
-
     private String wingEmail;
-
     private String wingAddress;
     @ElementCollection
     @CollectionTable(name = "user_wingTeamMembers", joinColumns = @JoinColumn(name = "wing_id"))
     @Column(name = "wingTeamMembers")
     private Set<String> wingTeamMembers;
-    @NotBlank(message = "Wing task should not be null or empty")
     private String wingTask;
     @CreatedDate
     private Date createAt;
